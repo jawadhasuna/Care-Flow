@@ -45,6 +45,15 @@ export function SiteFooter() {
         <div>
           <h2 className="text-[11px] font-bold tracking-[0.22em] text-teal-300 uppercase">Contact</h2>
           <ul className="mt-5 space-y-4 text-sm">
+            <li>
+              <span className="block text-xs text-white/55">General enquiries</span>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="mt-0.5 inline-block break-all transition-colors hover:text-white"
+              >
+                {SITE.email}
+              </a>
+            </li>
             {TEAM.map((m) => (
               <li key={m.email}>
                 <span className="block text-xs text-white/55">{m.name}</span>

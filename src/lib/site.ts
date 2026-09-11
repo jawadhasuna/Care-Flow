@@ -10,7 +10,7 @@ export const SITE = {
   legalName: "New England CareFlow LLC",
   description:
     "New England CareFlow LLC builds research tools for critical-care nursing documentation, starting with Visual Notes.",
-  email: "jawadhassanbusiness@gmail.com",
+  email: "newenglandcareflow@gmail.com",
   visualNotesUrl: "https://visualizenotes.vercel.app",
   preprintUrl: "https://preprints.jmir.org/preprint/102954",
 };
