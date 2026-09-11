@@ -1,0 +1,144 @@
+import Image from "next/image";
+import { METHOD, TEAM, type TeamMember } from "@/lib/site";
+import { Reveal } from "./motion/Reveal";
+
+function LinkIcon({ link }: { link: TeamMember["link"] }) {
+  if (link === "linkedin") {
+    return (
+      <svg aria-hidden width="14" height="14" viewBox="3 3 18 18" fill="currentColor">
+        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
+      </svg>
+    );
+  }
+  return (
+    <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />
+    </svg>
+  );
+}
+
+/**
+ * The team: portrait in a navy-to-seagreen ring. Photo and name open their
+ * profile; below sit separate profile and email links (a link can't nest
+ * inside another link, so the card itself isn't one).
+ */
+export function TeamGrid() {
+  return (
+    <ul className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {TEAM.map((m, i) => (
+        <Reveal as="li" key={m.name} delay={i * 0.12}>
+          <div className="p-4">
+            <a
+              href={m.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+            >
+              <div className="relative mx-auto size-36 rounded-full bg-[conic-gradient(from_210deg,#052c52,#04acaf,#052c52)] p-[3px] transition-transform duration-700 ease-soft group-hover:-translate-y-1.5">
+                <div className="relative size-full overflow-hidden rounded-full bg-white">
+                  <Image
+                    src={m.photo}
+                    alt={`Portrait of ${m.name}`}
+                    fill
+                    sizes="144px"
+                    placeholder="blur"
+                    className="object-cover transition-transform duration-700 ease-soft group-hover:scale-105"
+                  />
+                </div>
+                <span className="absolute right-0.5 bottom-0.5 flex size-9 items-center justify-center rounded-full bg-navy-800 text-white ring-4 ring-white transition-colors duration-300 group-hover:bg-teal-700">
+                  <LinkIcon link={m.link} />
+                </span>
+              </div>
+
+              <h3 className="mt-6 font-display text-xl text-navy-800 transition-colors duration-300 group-hover:text-teal-700">
+                {m.name}
+              </h3>
+            </a>
+            {/* An empty line still takes its height, so the three cards stay aligned. */}
+            <p className="mt-1.5 min-h-[1.1em] text-[11px] font-bold tracking-[0.2em] text-teal-700 uppercase">
+              {m.credentials}
+            </p>
+            <p className="mx-auto mt-3 max-w-[16rem] text-[15px] leading-relaxed font-light">
+              {m.role}
+            </p>
+
+            <a
+              href={`mailto:${m.email}`}
+              className="mt-4 inline-flex items-center gap-2 text-[14px] break-all text-navy-800 transition-colors hover:text-teal-700"
+            >
+              <MailIcon />
+              <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
+            </a>
+            <div>
+              <a
+                href={m.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
+              >
+                {m.link === "linkedin" ? "LinkedIn" : "Website"}
+                <span aria-hidden>↗</span>
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      ))}
+    </ul>
+  );
+}
+
+/** Segment → Extract → Ground → Cover → Render, as five numbered steps. */
+export function MethodSteps() {
+  return (
+    <ol className="mt-16 grid gap-10 text-left sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+      {METHOD.map((m, i) => (
+        <Reveal as="li" key={m.step} delay={i * 0.1}>
+          <div className="h-full border-t border-mist-300 pt-6">
+            <span className="font-display text-sm font-medium tracking-[0.2em] text-teal-700">
+              0{i + 1}
+            </span>
+            <h3 className="mt-2 font-display text-2xl font-light tracking-[0.04em] text-navy-800 uppercase">
+              {m.step}
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed font-light">{m.text}</p>
+          </div>
+        </Reveal>
+      ))}
+    </ol>
+  );
+}
+
+/** Headline numbers from the pilot study, on a photo band. */
+export function StudyStats() {
+  const stats = [
+    { value: "41", label: "Critical-care nurses" },
+    { value: "−44%", label: "Perceived workload" },
+    { value: "6 / 6", label: "Subscales improved" },
+  ];
+  return (
+    <dl className="mt-14 grid gap-10 sm:grid-cols-3">
+      {stats.map((s, i) => (
+        <Reveal key={s.label} delay={0.15 + i * 0.12}>
+          <dt className="sr-only">{s.label}</dt>
+          <dd className="font-display text-6xl font-extralight tracking-tight text-white md:text-7xl">
+            {s.value}
+          </dd>
+          <dd className="mt-3 text-[11px] font-bold tracking-[0.22em] text-teal-200 uppercase">
+            {s.label}
+          </dd>
+        </Reveal>
+      ))}
+    </dl>
+  );
+}
