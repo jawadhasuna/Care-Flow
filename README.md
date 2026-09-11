@@ -1,69 +1,26 @@
-# New England CareFlow — company website
+# New England CareFlow
 
-Marketing site for **New England CareFlow LLC**. Layout follows the classic
-medical-company pattern: full-screen photo hero, alternating white and
-parallax-photo sections, thin uppercase headings, outline pill buttons.
+**https://newenglandcareflow.vercel.app**
 
-## Run it locally
+New England CareFlow LLC is a research and prototype development company
+building clinical visualization tools for critical-care nursing.
 
-```bash
-npm install
-```
+Nurses document a patient's condition in long narrative notes, and reading a
+full admission means reassembling the patient's story from paragraphs. Our
+tools restructure that documentation so the story reads at a glance.
 
-```bash
-npm run dev
-```
+## Visual Notes
 
-Then open <http://localhost:3000>.
+Our first product. Visual Notes turns narrative critical-care nursing notes
+into a structured, body-system chart. Every fact on the chart links back to
+the exact words it came from in the original notes.
 
-## Deploy
+In a pilot study, 41 critical-care nurses reviewed the same patient admission
+as written notes and as a visual note. Their perceived workload fell by 44%.
 
-Hosted on Vercel. Push to GitHub, import the repo at <https://vercel.com/new>,
-and accept the defaults — Vercel detects Next.js on its own.
+Visual Notes is a research prototype. It is not clinical decision support
+and is not for use in patient care.
 
-## Where things live
+---
 
-```
-src/
-  app/
-    page.tsx            home
-    about/ products/ research/ contact/
-    layout.tsx          fonts, header, footer, smooth scroll
-    globals.css         brand tokens (navy #052C52, seagreen #04ACAF)
-    manifest.ts         "Add to Home Screen" name + icons
-  components/
-    Logo.tsx            NC mark + wordmark (same artwork as Visual Notes)
-    SiteHeader.tsx      white top bar, dropdown menus, mobile menu
-    Hero.tsx            first screen
-    PhotoSection.tsx    full-bleed parallax photo band
-    Section.tsx         white sections, headings, pill buttons
-    Blocks.tsx          team, method steps, study numbers
-    motion/             Reveal (fade-up on scroll), SmoothScroll (Lenis)
-  lib/site.ts           company facts, nav, team — edit text here
-  assets/photos/        background photos
-  assets/team/          team portraits
-```
-
-## Stack
-
-- **Next.js 16** (App Router) + React 19 + TypeScript
-- **Tailwind CSS v4**
-- **motion** — fade-ins and parallax
-- **lenis** — smooth scrolling
-
-All animation respects the visitor's reduced-motion setting.
-
-## Photo credits
-
-All photos are from [Unsplash](https://unsplash.com) under the Unsplash
-License (free for commercial use, attribution not required).
-
-| File | Photographer | Unsplash id |
-|---|---|---|
-| `hero.jpg` | Piron Guillaume | `y5hQCIn1c6o` |
-| `documentation.jpg` | National Cancer Institute | `NFvdKIhxYlU` |
-| `monitor.jpg` | Jair Lázaro | `0lrJo37r6Nk` |
-| `nurse.jpg` | SJ Objio | `8hHxO3iYuU0` |
-| `iv-stand.jpg` | Marcelo Leal | `6pcGTJDuf6M` |
-| `hallway.jpg` | Luis Melendez | `Pd4lRfKo16U` |
-| `icu.jpg` | Richard Catabay | `05kHY7AYCp8` |
+© 2026 New England CareFlow LLC
