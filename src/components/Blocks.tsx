@@ -33,11 +33,23 @@ const cardLink =
   "group block outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4";
 
 /**
- * A team portrait in the site's soft-teal tone: the photo at 35% colour under
- * a 30% "color" blend of #0e5a73. Hover or keyboard focus on the surrounding
- * link fades it to true colour; touch screens (no hover) keep the tone.
+ * A team portrait. With `toned` (the homepage) it sits in the site's soft-teal
+ * tone — the photo at 35% colour under a 30% "color" blend of #0e5a73 — and
+ * hover or keyboard focus on the surrounding link fades it to true colour;
+ * touch screens (no hover) keep the tone. Without it (the About page) it shows
+ * in original colour.
  */
-function TonedPhoto({ src, alt, sizes }: { src: StaticImageData; alt: string; sizes: string }) {
+function TonedPhoto({
+  src,
+  alt,
+  sizes,
+  toned = true,
+}: {
+  src: StaticImageData;
+  alt: string;
+  sizes: string;
+  toned?: boolean;
+}) {
   return (
     <>
       <Image
@@ -46,12 +58,16 @@ function TonedPhoto({ src, alt, sizes }: { src: StaticImageData; alt: string; si
         fill
         sizes={sizes}
         placeholder="blur"
-        className="object-cover saturate-[0.35] transition duration-700 ease-soft group-hover:scale-[1.03] group-hover:saturate-100 group-focus-visible:saturate-100"
+        className={`object-cover transition duration-700 ease-soft group-hover:scale-[1.03] ${
+          toned ? "saturate-[0.35] group-hover:saturate-100 group-focus-visible:saturate-100" : ""
+        }`}
       />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[#0e5a73] opacity-30 mix-blend-color transition-opacity duration-700 ease-soft group-hover:opacity-0 group-focus-visible:opacity-0"
-      />
+      {toned && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[#0e5a73] opacity-30 mix-blend-color transition-opacity duration-700 ease-soft group-hover:opacity-0 group-focus-visible:opacity-0"
+        />
+      )}
     </>
   );
 }
@@ -111,7 +127,12 @@ export function TeamList() {
             className={`${cardLink} mx-auto w-full max-w-[260px] sm:max-w-none`}
           >
             <div className="relative isolate aspect-[3/4] overflow-hidden bg-mist-100">
-              <TonedPhoto src={m.portrait} alt={`Portrait of ${m.name}`} sizes="(min-width: 768px) 260px, 220px" />
+              <TonedPhoto
+                src={m.portrait}
+                alt={`Portrait of ${m.name}`}
+                sizes="(min-width: 768px) 260px, 220px"
+                toned={false}
+              />
             </div>
             <span className="sr-only">
               {m.name} on {m.link === "linkedin" ? "LinkedIn" : "their website"} (opens in a new tab)

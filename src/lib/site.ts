@@ -103,8 +103,8 @@ export const TEAM: TeamMember[] = [
     link: "linkedin",
     email: "Syed.naveed@gmail.com",
     portrait: naveedPortrait,
-    // Source: his LinkedIn listing (UMass Lowell, adjunct faculty) and public career records
-    // (Shrewsbury, MA). Have Naveed confirm the employers before this goes live.
+    // Source: his LinkedIn listing (UMass Lowell, adjunct faculty) and public career records;
+    // employers and degree confirmed by Jawad, 2026-09-12.
     bio: "PhD in Biomedical Engineering, University of Massachusetts Lowell. A medical-device systems engineer — now principal systems engineer at Olympus Surgical Technologies America, after roles at ZOLL Medical, BrainScope and Third Pole Therapeutics — and adjunct faculty at UMass Lowell, he leads the technology behind Visual Notes.",
   },
   {

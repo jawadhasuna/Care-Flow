@@ -11,7 +11,7 @@ export function SiteFooter() {
           <Link href="/" className="inline-flex items-center gap-3 py-2">
             <Mark className="mark-reverse w-11" />
             <span className="font-display text-[0.94rem] font-extrabold tracking-[0.045em] text-white uppercase">
-              New England <span className="text-teal-300">CareFlow</span>
+              New England <span className="text-teal-300">CareFlow</span> LLC
             </span>
           </Link>
           <p className="mt-6 max-w-sm text-sm leading-relaxed font-light">
