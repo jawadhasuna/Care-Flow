@@ -44,14 +44,21 @@ export function TeamGrid() {
             rel="noopener noreferrer"
             className="group block outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4"
           >
-            <div className="relative aspect-[4/3] overflow-hidden bg-mist-100">
+            <div className="relative isolate aspect-[4/3] overflow-hidden bg-mist-100">
               <Image
                 src={m.photo}
                 alt={`Portrait of ${m.name}`}
                 fill
                 sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 90vw"
                 placeholder="blur"
-                className="object-cover transition-transform duration-700 ease-soft group-hover:scale-[1.03]"
+                className="object-cover saturate-[0.35] transition duration-700 ease-soft group-hover:scale-[1.03] group-hover:saturate-100 group-focus-visible:saturate-100"
+              />
+              {/* Soft teal: the photo at 35% colour under a 30% "color" blend
+                  of #0e5a73. Hover or keyboard focus fades it to true colour;
+                  touch screens (no hover) keep the tone. */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[#0e5a73] opacity-30 mix-blend-color transition-opacity duration-700 ease-soft group-hover:opacity-0 group-focus-visible:opacity-0"
               />
             </div>
             <h3 className="mt-7 font-display text-[1.35rem] font-semibold text-navy-800 transition-colors duration-300 group-hover:text-teal-700">
