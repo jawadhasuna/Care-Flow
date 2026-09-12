@@ -29,73 +29,63 @@ function MailIcon() {
 }
 
 /**
- * The team, one card each: portrait in a navy-to-seagreen ring, name and
- * role, then a footer strip with email and profile links. Photo and name
- * open the profile (a link can't nest inside another link, so the card
- * itself isn't one).
+ * The team, laid out like a classic medical-company site: a large 4:3
+ * portrait, then name, role and credentials centred beneath it, with email
+ * and profile links at the foot. The photo and name open the profile.
  */
 export function TeamGrid() {
   return (
-    <ul className="mt-10 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+    <ul className="mt-12 grid gap-x-10 gap-y-16 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
       {TEAM.map((m, i) => (
-        <Reveal as="li" key={m.name} delay={i * 0.12} className="h-full">
-          <div className="group flex h-full flex-col items-center rounded-2xl border border-mist-200 bg-white px-6 pt-10 pb-5 transition-all duration-500 ease-soft hover:-translate-y-1 hover:border-teal-500 hover:shadow-[0_24px_50px_-28px_rgba(5,44,82,0.45)]">
+        <Reveal as="li" key={m.name} delay={i * 0.12} className="flex h-full flex-col">
+          <a
+            href={m.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4"
+          >
+            <div className="relative aspect-[4/3] overflow-hidden bg-mist-100">
+              <Image
+                src={m.photo}
+                alt={`Portrait of ${m.name}`}
+                fill
+                sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 90vw"
+                placeholder="blur"
+                className="object-cover transition-transform duration-700 ease-soft group-hover:scale-[1.03]"
+              />
+            </div>
+            <h3 className="mt-7 font-display text-[1.35rem] font-semibold text-navy-800 transition-colors duration-300 group-hover:text-teal-700">
+              {m.name}
+            </h3>
+          </a>
+          <p className="mx-auto mt-1 max-w-xs font-display text-lg leading-snug font-light text-navy-800">
+            {m.role}
+          </p>
+          {m.credentials && (
+            <p className="mt-3 text-sm font-light tracking-wide">{m.credentials}</p>
+          )}
+
+          {/* mt-auto pins the links to the foot, so all three line up even
+              though one person has no credentials line. */}
+          <div className="mt-auto flex flex-wrap items-center justify-center gap-x-5 pt-4">
+            <EmailLink
+              email={m.email}
+              className="inline-flex items-center gap-2 py-2 text-[13px] break-all text-navy-800 transition-colors hover:text-teal-700"
+            >
+              <MailIcon />
+              <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
+            </EmailLink>
             <a
               href={m.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4"
+              className="inline-flex items-center gap-1.5 py-2 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
             >
-              <div className="relative mx-auto size-36 rounded-full bg-[conic-gradient(from_210deg,#052c52,#04acaf,#052c52)] p-[3px]">
-                <div className="relative size-full overflow-hidden rounded-full bg-white">
-                  <Image
-                    src={m.photo}
-                    alt={`Portrait of ${m.name}`}
-                    fill
-                    sizes="144px"
-                    placeholder="blur"
-                    className="object-cover transition-transform duration-700 ease-soft group-hover:scale-105"
-                  />
-                </div>
-                <span className="absolute right-0.5 bottom-0.5 flex size-9 items-center justify-center rounded-full bg-navy-800 text-white ring-4 ring-white transition-colors duration-300 group-hover:bg-teal-700">
-                  <LinkIcon link={m.link} />
-                </span>
-              </div>
-
-              <h3 className="mt-6 font-display text-xl text-navy-800">{m.name}</h3>
+              <LinkIcon link={m.link} />
+              {m.link === "linkedin" ? "LinkedIn" : "Website"}
+              <span aria-hidden>↗</span>
+              <span className="sr-only">(opens in a new tab)</span>
             </a>
-            {/* Same line box whether or not there are credentials, so all
-                three cards line up. */}
-            <p className="mt-2 h-4 text-[11px] leading-4 font-bold tracking-[0.2em] text-teal-700 uppercase">
-              {m.credentials}
-            </p>
-            <p className="mx-auto mt-3 max-w-[16rem] text-[15px] leading-relaxed font-light">
-              {m.role}
-            </p>
-
-            {/* mt-auto pins the strip to the card's foot; pt-6 keeps a gap
-                above it even on the tallest card, where mt-auto is zero. */}
-            <div className="mt-auto w-full pt-6">
-              <div className="flex flex-col items-center border-t border-mist-200 pt-3">
-                <EmailLink
-                  email={m.email}
-                  className="inline-flex items-center gap-2 py-2 text-[14px] break-all text-navy-800 transition-colors hover:text-teal-700"
-                >
-                  <MailIcon />
-                  <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
-                </EmailLink>
-                <a
-                  href={m.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 py-2 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
-                >
-                  {m.link === "linkedin" ? "LinkedIn" : "Website"}
-                  <span aria-hidden>↗</span>
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
           </div>
         </Reveal>
       ))}

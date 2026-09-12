@@ -45,7 +45,7 @@ export default function Home() {
         </Actions>
       </PhotoSection>
 
-      <TextSection id="team" width="wide" tint>
+      <TextSection id="team" width="wide">
         <SectionTitle>Our team</SectionTitle>
         <TeamGrid />
         <Actions>
