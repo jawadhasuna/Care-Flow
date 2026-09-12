@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mark } from "./Logo";
-import { NAV, SITE, TEAM } from "@/lib/site";
+import { NAV, SITE, TEAM, mailto } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -48,7 +48,7 @@ export function SiteFooter() {
             <li>
               <span className="block text-xs text-white/55">General enquiries</span>
               <a
-                href={`mailto:${SITE.email}`}
+                href={mailto(SITE.email)}
                 className="mt-0.5 inline-block break-all transition-colors hover:text-white"
               >
                 {SITE.email}
@@ -58,7 +58,7 @@ export function SiteFooter() {
               <li key={m.email}>
                 <span className="block text-xs text-white/55">{m.name}</span>
                 <a
-                  href={`mailto:${m.email}`}
+                  href={mailto(m.email)}
                   className="mt-0.5 inline-block break-all transition-colors hover:text-white"
                 >
                   {m.email}

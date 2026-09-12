@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { PhotoSection } from "@/components/PhotoSection";
 import { Actions, Lead, PillLink, SectionTitle, TextSection } from "@/components/Section";
 import { Reveal } from "@/components/motion/Reveal";
-import { SITE, TEAM } from "@/lib/site";
+import { CopyEmail } from "@/components/CopyEmail";
+import { SITE, TEAM, mailto } from "@/lib/site";
 
 import ivStand from "@/assets/photos/iv-stand.jpg";
 
@@ -23,14 +24,15 @@ export default function ContactPage() {
         <Lead>Email us and we&apos;ll get back to you.</Lead>
         <Reveal delay={0.2}>
           <a
-            href={`mailto:${SITE.email}`}
+            href={mailto(SITE.email)}
             className="mt-10 inline-block font-display text-xl font-light break-all text-navy-800 underline decoration-teal-500 decoration-1 underline-offset-8 transition-colors hover:text-teal-700 md:text-3xl"
           >
             {SITE.email}
           </a>
         </Reveal>
         <Actions delay={0.3}>
-          <PillLink href={`mailto:${SITE.email}`}>Send an email</PillLink>
+          <PillLink href={mailto(SITE.email)}>Send an email</PillLink>
+          <CopyEmail email={SITE.email} />
         </Actions>
 
         <Reveal delay={0.35}>
@@ -48,12 +50,15 @@ export default function ContactPage() {
                     <span className="block font-display text-lg text-navy-800">{m.name}</span>
                     <span className="block text-sm font-light">{m.role}</span>
                   </span>
-                  <a
-                    href={`mailto:${m.email}`}
-                    className="text-[15px] break-all text-navy-800 underline decoration-teal-500 underline-offset-4 transition-colors hover:text-teal-700 sm:shrink-0"
-                  >
-                    {m.email}
-                  </a>
+                  <span className="flex items-center gap-1 sm:shrink-0">
+                    <a
+                      href={mailto(m.email)}
+                      className="text-[15px] break-all text-navy-800 underline decoration-teal-500 underline-offset-4 transition-colors hover:text-teal-700"
+                    >
+                      {m.email}
+                    </a>
+                    <CopyEmail email={m.email} variant="icon" />
+                  </span>
                 </li>
               ))}
             </ul>

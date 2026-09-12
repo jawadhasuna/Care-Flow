@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { EASE } from "./motion/Reveal";
+import { smoothScrollTo } from "./motion/SmoothScroll";
 
 const LINES = ["See the whole", "patient story"];
 
@@ -87,6 +88,10 @@ export function Hero({ image }: { image: StaticImageData }) {
 
       <a
         href="#what-we-do"
+        onClick={(e) => {
+          e.preventDefault();
+          smoothScrollTo("#what-we-do");
+        }}
         aria-label="Scroll to content"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 p-2 text-white/80 transition-colors hover:text-white"
       >

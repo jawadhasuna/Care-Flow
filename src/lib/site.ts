@@ -15,6 +15,11 @@ export const SITE = {
   preprintUrl: "https://preprints.jmir.org/preprint/102954",
 };
 
+/** mailto: link with the subject pre-filled, so website enquiries stand out in the inbox. */
+export function mailto(email: string) {
+  return `mailto:${email}?subject=${encodeURIComponent("Enquiry from the New England CareFlow website")}`;
+}
+
 export type NavItem = {
   label: string;
   href: string;

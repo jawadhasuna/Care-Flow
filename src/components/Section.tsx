@@ -78,6 +78,15 @@ export function Actions({
   );
 }
 
+/** Outline pill style, shared by pill links and pill buttons. */
+export function pillClass(tone: "dark" | "light" = "dark") {
+  return `inline-flex items-center gap-2 rounded-full border-[1.5px] px-7 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-500 ease-soft ${
+    tone === "light"
+      ? "border-white text-white hover:bg-white hover:text-navy-800"
+      : "border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white"
+  }`;
+}
+
 /** Outline pill button; fills on hover. External links open in a new tab. */
 export function PillLink({
   href,
@@ -90,11 +99,7 @@ export function PillLink({
   tone?: "dark" | "light";
   external?: boolean;
 }) {
-  const className = `inline-flex items-center gap-2 rounded-full border-[1.5px] px-7 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-500 ease-soft ${
-    tone === "light"
-      ? "border-white text-white hover:bg-white hover:text-navy-800"
-      : "border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white"
-  }`;
+  const className = pillClass(tone);
 
   if (external) {
     return (

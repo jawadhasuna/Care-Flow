@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { Wordmark } from "./Logo";
 import { EASE } from "./motion/Reveal";
+import { smoothScrollTo } from "./motion/SmoothScroll";
 import { NAV, SITE } from "@/lib/site";
 
 /**
@@ -25,14 +26,38 @@ export function SiteHeader() {
 
   const isActive = (href: string) => pathname === href;
 
+  /**
+   * A link to the page you're already on glides instead of reloading — to the
+   * top, or to its #section. Links to other pages navigate normally, and
+   * SmoothScroll opens them at their top.
+   */
+  const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setOpen(false);
+    // Leave ctrl/cmd/shift-click alone so "open in new tab" still works.
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    const [path, hash] = href.split("#");
+    if (path !== pathname) return;
+    e.preventDefault();
+    if (hash) {
+      smoothScrollTo(`#${hash}`);
+      window.history.replaceState(null, "", `#${hash}`);
+    } else {
+      smoothScrollTo(0);
+      if (window.location.hash) window.history.replaceState(null, "", path);
+    }
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 border-b border-mist-200 bg-white/95 backdrop-blur-xl transition-shadow duration-500 ${
         scrolled ? "shadow-[0_10px_30px_-18px_rgba(5,44,82,0.35)]" : ""
       }`}
     >
-      <div className="mx-auto flex h-16 w-full max-w-[1500px] items-center justify-between gap-8 px-5">
-        <Link href="/" aria-label={`${SITE.name} home`} onClick={() => setOpen(false)}>
+      <div
+        data-header-bar
+        className="mx-auto flex h-16 w-full max-w-[1500px] items-center justify-between gap-8 px-5"
+      >
+        <Link href="/" aria-label={`${SITE.name} home`} onClick={(e) => onNavClick(e, "/")}>
           <Wordmark />
         </Link>
 
@@ -41,6 +66,7 @@ export function SiteHeader() {
             <div key={item.href} className="group relative">
               <Link
                 href={item.href}
+                onClick={(e) => onNavClick(e, item.href)}
                 className={`flex items-center gap-1.5 py-5 text-[12.5px] font-bold text-navy-800 transition-opacity hover:opacity-70 ${
                   isActive(item.href) ? "underline decoration-teal-500 decoration-2 underline-offset-8" : ""
                 }`}
@@ -66,6 +92,7 @@ export function SiteHeader() {
                       <Link
                         key={c.href}
                         href={c.href}
+                        onClick={(e) => onNavClick(e, c.href)}
                         className="block rounded-lg px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap text-navy-800 transition-colors hover:bg-mist-100 hover:text-teal-700"
                       >
                         {c.label}
@@ -108,7 +135,7 @@ export function SiteHeader() {
                 <li key={item.href} className="py-1">
                   <Link
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => onNavClick(e, item.href)}
                     className="block py-2 text-[15px] font-bold text-navy-800"
                   >
                     {item.label}
@@ -117,7 +144,7 @@ export function SiteHeader() {
                     <Link
                       key={c.href}
                       href={c.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => onNavClick(e, c.href)}
                       className="block py-1.5 pl-4 text-[14px] font-medium text-body"
                     >
                       {c.label}
