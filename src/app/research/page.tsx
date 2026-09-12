@@ -5,7 +5,7 @@ import { MethodSteps } from "@/components/Blocks";
 import { Reveal } from "@/components/motion/Reveal";
 import { SITE } from "@/lib/site";
 
-import icu from "@/assets/photos/icu.jpg";
+import clipboard from "@/assets/photos/clipboard.jpg";
 import monitor from "@/assets/photos/monitor.jpg";
 import documentation from "@/assets/photos/documentation.jpg";
 
@@ -31,7 +31,7 @@ const GUARANTEES = [
 export default function ResearchPage() {
   return (
     <>
-      <PhotoSection image={icu} size="header" wash="strong">
+      <PhotoSection image={clipboard} size="header" wash="strong">
         <SectionTitle tone="light" as="h1">
           The research
         </SectionTitle>

@@ -4,7 +4,7 @@ import { Actions, Lead, PillLink, SectionTitle, TextSection } from "@/components
 import { TeamGrid } from "@/components/Blocks";
 
 import hallway from "@/assets/photos/hallway.jpg";
-import ivStand from "@/assets/photos/iv-stand.jpg";
+import corridor from "@/assets/photos/corridor.jpg";
 
 export const metadata: Metadata = { title: "About" };
 
@@ -40,7 +40,7 @@ export default function AboutPage() {
         <TeamGrid />
       </TextSection>
 
-      <PhotoSection image={ivStand}>
+      <PhotoSection image={corridor}>
         <SectionTitle tone="light">Work with us</SectionTitle>
         <Lead tone="light">We&apos;re glad to hear from researchers, clinicians and pilot sites.</Lead>
         <Actions>

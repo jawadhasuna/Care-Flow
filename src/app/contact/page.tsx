@@ -6,14 +6,14 @@ import { CopyEmail } from "@/components/CopyEmail";
 import { EmailLink } from "@/components/EmailLink";
 import { SITE, TEAM } from "@/lib/site";
 
-import ivStand from "@/assets/photos/iv-stand.jpg";
+import corridor from "@/assets/photos/corridor.jpg";
 
 export const metadata: Metadata = { title: "Contact" };
 
 export default function ContactPage() {
   return (
     <>
-      <PhotoSection image={ivStand} size="header">
+      <PhotoSection image={corridor} size="header">
         <SectionTitle tone="light" as="h1">
           Contact us
         </SectionTitle>

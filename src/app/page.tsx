@@ -9,7 +9,7 @@ import hero from "@/assets/photos/hero.jpg";
 import documentation from "@/assets/photos/documentation.jpg";
 import monitor from "@/assets/photos/monitor.jpg";
 import nurse from "@/assets/photos/nurse.jpg";
-import ivStand from "@/assets/photos/iv-stand.jpg";
+import corridor from "@/assets/photos/corridor.jpg";
 
 export default function Home() {
   return (
@@ -112,7 +112,7 @@ export default function Home() {
         </Reveal>
       </TextSection>
 
-      <PhotoSection image={ivStand}>
+      <PhotoSection image={corridor}>
         <SectionTitle tone="light">Contact us</SectionTitle>
         <Lead tone="light">Research collaborations, pilot sites, or questions about the study.</Lead>
         <Actions>
