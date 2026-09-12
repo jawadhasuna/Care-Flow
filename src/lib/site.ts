@@ -103,8 +103,9 @@ export const TEAM: TeamMember[] = [
     link: "linkedin",
     email: "Syed.naveed@gmail.com",
     portrait: naveedPortrait,
-    // PROVISIONAL — replace with degree + university from LinkedIn.
-    bio: "Leads technology at New England CareFlow, guiding how Visual Notes turns nursing documentation into verifiable charts.",
+    // Source: his LinkedIn listing (UMass Lowell, adjunct faculty) and public career records
+    // (Shrewsbury, MA). Have Naveed confirm the employers before this goes live.
+    bio: "PhD in Biomedical Engineering, University of Massachusetts Lowell. A medical-device systems engineer — now principal systems engineer at Olympus Surgical Technologies America, after roles at ZOLL Medical, BrainScope and Third Pole Therapeutics — and adjunct faculty at UMass Lowell, he leads the technology behind Visual Notes.",
   },
   {
     name: "Jawad Hassan",
