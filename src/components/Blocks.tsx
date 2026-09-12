@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { METHOD, TEAM, mailto, type TeamMember } from "@/lib/site";
+import { METHOD, TEAM, type TeamMember } from "@/lib/site";
+import { EmailLink } from "./EmailLink";
 import { Reveal } from "./motion/Reveal";
 
 function LinkIcon({ link }: { link: TeamMember["link"] }) {
@@ -72,13 +73,13 @@ export function TeamGrid() {
               {m.role}
             </p>
 
-            <a
-              href={mailto(m.email)}
+            <EmailLink
+              email={m.email}
               className="mt-2 inline-flex items-center gap-2 py-2 text-[14px] break-all text-navy-800 transition-colors hover:text-teal-700"
             >
               <MailIcon />
               <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
-            </a>
+            </EmailLink>
             <div>
               <a
                 href={m.href}

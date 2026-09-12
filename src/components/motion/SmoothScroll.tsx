@@ -29,6 +29,15 @@ export function smoothScrollTo(target: number | string | HTMLElement) {
   else window.scrollTo({ top });
 }
 
+/** Freeze page scrolling (under the open mobile menu) or release it. */
+export function setScrollLocked(locked: boolean) {
+  if (lenis) {
+    if (locked) lenis.stop();
+    else lenis.start();
+  }
+  document.documentElement.style.overflow = locked ? "hidden" : "";
+}
+
 /**
  * Glide-scrolling for the whole page. Lenis eases the native scroll position
  * rather than faking it, so anchors, the scrollbar and Motion's useScroll all

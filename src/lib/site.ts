@@ -15,9 +15,22 @@ export const SITE = {
   preprintUrl: "https://preprints.jmir.org/preprint/102954",
 };
 
-/** mailto: link with the subject pre-filled, so website enquiries stand out in the inbox. */
+/** Pre-filled on every email link, so website enquiries stand out in the inbox. */
+const EMAIL_SUBJECT = "Enquiry from the New England CareFlow website";
+
+/** Opens the device's mail app — reliable on phones, often a no-op on desktops. */
 export function mailto(email: string) {
-  return `mailto:${email}?subject=${encodeURIComponent("Enquiry from the New England CareFlow website")}`;
+  return `mailto:${email}?subject=${encodeURIComponent(EMAIL_SUBJECT)}`;
+}
+
+/** Gmail's web compose window, for desktop visitors with no mail app. */
+export function gmailCompose(email: string) {
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(EMAIL_SUBJECT)}`;
+}
+
+/** Outlook's web compose window. */
+export function outlookCompose(email: string) {
+  return `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(email)}&subject=${encodeURIComponent(EMAIL_SUBJECT)}`;
 }
 
 export type NavItem = {
