@@ -69,6 +69,8 @@ export const NAV: NavItem[] = [
 
 export type TeamMember = {
   name: string;
+  /** Shown on the About page's team rows only, not on the homepage. */
+  credentials: string;
   role: string;
   photo: StaticImageData;
   href: string;
@@ -83,6 +85,7 @@ export type TeamMember = {
 export const TEAM: TeamMember[] = [
   {
     name: "Maryum Zaidi",
+    credentials: "MSN, PhD, RN",
     role: "Co-Founder & Chief Executive Officer",
     photo: maryumPhoto,
     href: "https://www.linkedin.com/in/maryum-zaidi/",
@@ -94,6 +97,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: "Syed Naveed Zaidi",
+    credentials: "MS, PhD",
     role: "Co-Founder & Chief Technology Officer",
     photo: naveedPhoto,
     href: "https://www.linkedin.com/in/naveed-zaidi-7699032/",
@@ -106,6 +110,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: "Jawad Hassan",
+    credentials: "",
     role: "Digital Innovation & Web Operations Specialist",
     photo: jawadPhoto,
     href: "https://www.jawadhasuna.site",

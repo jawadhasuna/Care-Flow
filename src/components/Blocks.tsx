@@ -103,8 +103,8 @@ export function TeamGrid() {
 
 /**
  * About page team ("Meet the team"): one person per row, stacked vertically —
- * a tall 3:4 portrait on the left, and on the right name, role, a short
- * summary and contact links. On phones the portrait sits above.
+ * a tall 3:4 portrait on the left, and on the right name, role, credentials,
+ * a short summary and contact links. On phones the portrait sits above.
  */
 export function TeamList() {
   return (
@@ -137,6 +137,11 @@ export function TeamList() {
           <div>
             <h3 className="font-display text-2xl font-semibold text-navy-800">{m.name}</h3>
             <p className="mt-1 font-display text-lg leading-snug font-light text-navy-800">{m.role}</p>
+            {m.credentials && (
+              <p className="mt-2 text-[11px] font-bold tracking-[0.2em] text-teal-700 uppercase">
+                {m.credentials}
+              </p>
+            )}
             <span aria-hidden className="mt-5 block h-px w-12 bg-teal-500" />
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed font-light">{m.bio}</p>
 
