@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { METHOD, TEAM, type TeamMember } from "@/lib/site";
 import { EmailLink } from "./EmailLink";
 import { Reveal } from "./motion/Reveal";
@@ -30,20 +31,22 @@ function MailIcon() {
 
 /**
  * The team, laid out like a classic medical-company site: a large 4:3
- * portrait, then name, role and credentials centred beneath it, with email
- * and profile links at the foot. The photo and name open the profile.
+ * portrait, then name, role and credentials centred beneath it.
+ *
+ * `details` is for the About page's team section: photo and name open each
+ * person's LinkedIn or website, and email and profile links sit at the foot.
+ * Without it (the homepage) the grid stays clean — no contact links — and
+ * each person leads to the About page's team section instead.
  */
-export function TeamGrid() {
+export function TeamGrid({ details = false }: { details?: boolean }) {
+  const cardLink =
+    "group block outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4";
+
   return (
     <ul className="mt-12 grid gap-x-10 gap-y-16 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
-      {TEAM.map((m, i) => (
-        <Reveal as="li" key={m.name} delay={i * 0.12} className="flex h-full flex-col">
-          <a
-            href={m.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4"
-          >
+      {TEAM.map((m, i) => {
+        const photoAndName = (
+          <>
             <div className="relative isolate aspect-[4/3] overflow-hidden bg-mist-100">
               <Image
                 src={m.photo}
@@ -64,38 +67,54 @@ export function TeamGrid() {
             <h3 className="mt-7 font-display text-[1.35rem] font-semibold text-navy-800 transition-colors duration-300 group-hover:text-teal-700">
               {m.name}
             </h3>
-          </a>
-          <p className="mx-auto mt-1 max-w-xs font-display text-lg leading-snug font-light text-navy-800">
-            {m.role}
-          </p>
-          {m.credentials && (
-            <p className="mt-3 text-sm font-light tracking-wide">{m.credentials}</p>
-          )}
+          </>
+        );
 
-          {/* mt-auto pins the links to the foot, so all three line up even
-              though one person has no credentials line. */}
-          <div className="mt-auto flex flex-wrap items-center justify-center gap-x-5 pt-4">
-            <EmailLink
-              email={m.email}
-              className="inline-flex items-center gap-2 py-2 text-[13px] break-all text-navy-800 transition-colors hover:text-teal-700"
-            >
-              <MailIcon />
-              <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
-            </EmailLink>
-            <a
-              href={m.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 py-2 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
-            >
-              <LinkIcon link={m.link} />
-              {m.link === "linkedin" ? "LinkedIn" : "Website"}
-              <span aria-hidden>↗</span>
-              <span className="sr-only">(opens in a new tab)</span>
-            </a>
-          </div>
-        </Reveal>
-      ))}
+        return (
+          <Reveal as="li" key={m.name} delay={i * 0.12} className="flex h-full flex-col">
+            {details ? (
+              <a href={m.href} target="_blank" rel="noopener noreferrer" className={cardLink}>
+                {photoAndName}
+              </a>
+            ) : (
+              <Link href="/about#team" className={cardLink}>
+                {photoAndName}
+              </Link>
+            )}
+            <p className="mx-auto mt-1 max-w-xs font-display text-lg leading-snug font-light text-navy-800">
+              {m.role}
+            </p>
+            {m.credentials && (
+              <p className="mt-3 text-sm font-light tracking-wide">{m.credentials}</p>
+            )}
+
+            {details && (
+              // mt-auto pins the links to the foot, so all three line up even
+              // though one person has no credentials line.
+              <div className="mt-auto flex flex-wrap items-center justify-center gap-x-5 pt-4">
+                <EmailLink
+                  email={m.email}
+                  className="inline-flex items-center gap-2 py-2 text-[13px] break-all text-navy-800 transition-colors hover:text-teal-700"
+                >
+                  <MailIcon />
+                  <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
+                </EmailLink>
+                <a
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 py-2 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
+                >
+                  <LinkIcon link={m.link} />
+                  {m.link === "linkedin" ? "LinkedIn" : "Website"}
+                  <span aria-hidden>↗</span>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
+            )}
+          </Reveal>
+        );
+      })}
     </ul>
   );
 }

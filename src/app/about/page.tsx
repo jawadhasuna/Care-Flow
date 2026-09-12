@@ -37,7 +37,7 @@ export default function AboutPage() {
 
       <TextSection id="team" width="wide" tint>
         <SectionTitle>The team</SectionTitle>
-        <TeamGrid />
+        <TeamGrid details />
       </TextSection>
 
       <PhotoSection image={corridor}>
