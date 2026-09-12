@@ -29,23 +29,24 @@ function MailIcon() {
 }
 
 /**
- * The team: portrait in a navy-to-seagreen ring. Photo and name open their
- * profile; below sit separate profile and email links (a link can't nest
- * inside another link, so the card itself isn't one).
+ * The team, one card each: portrait in a navy-to-seagreen ring, name and
+ * role, then a footer strip with email and profile links. Photo and name
+ * open the profile (a link can't nest inside another link, so the card
+ * itself isn't one).
  */
 export function TeamGrid() {
   return (
-    <ul className="mt-10 grid gap-6 sm:mt-16 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+    <ul className="mt-10 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
       {TEAM.map((m, i) => (
-        <Reveal as="li" key={m.name} delay={i * 0.12}>
-          <div className="p-4">
+        <Reveal as="li" key={m.name} delay={i * 0.12} className="h-full">
+          <div className="group flex h-full flex-col items-center rounded-2xl border border-mist-200 bg-white px-6 pt-10 pb-5 transition-all duration-500 ease-soft hover:-translate-y-1 hover:border-teal-500 hover:shadow-[0_24px_50px_-28px_rgba(5,44,82,0.45)]">
             <a
               href={m.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-teal-500"
+              className="block rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4"
             >
-              <div className="relative mx-auto size-36 rounded-full bg-[conic-gradient(from_210deg,#052c52,#04acaf,#052c52)] p-[3px] transition-transform duration-700 ease-soft group-hover:-translate-y-1.5">
+              <div className="relative mx-auto size-36 rounded-full bg-[conic-gradient(from_210deg,#052c52,#04acaf,#052c52)] p-[3px]">
                 <div className="relative size-full overflow-hidden rounded-full bg-white">
                   <Image
                     src={m.photo}
@@ -61,36 +62,39 @@ export function TeamGrid() {
                 </span>
               </div>
 
-              <h3 className="mt-6 font-display text-xl text-navy-800 transition-colors duration-300 group-hover:text-teal-700">
-                {m.name}
-              </h3>
+              <h3 className="mt-6 font-display text-xl text-navy-800">{m.name}</h3>
             </a>
-            {/* An empty line still takes its height, so the three cards stay aligned. */}
-            <p className="mt-1.5 min-h-[1.1em] text-[11px] font-bold tracking-[0.2em] text-teal-700 uppercase">
+            {/* Same line box whether or not there are credentials, so all
+                three cards line up. */}
+            <p className="mt-2 h-4 text-[11px] leading-4 font-bold tracking-[0.2em] text-teal-700 uppercase">
               {m.credentials}
             </p>
             <p className="mx-auto mt-3 max-w-[16rem] text-[15px] leading-relaxed font-light">
               {m.role}
             </p>
 
-            <EmailLink
-              email={m.email}
-              className="mt-2 inline-flex items-center gap-2 py-2 text-[14px] break-all text-navy-800 transition-colors hover:text-teal-700"
-            >
-              <MailIcon />
-              <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
-            </EmailLink>
-            <div>
-              <a
-                href={m.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 py-2.5 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
-              >
-                {m.link === "linkedin" ? "LinkedIn" : "Website"}
-                <span aria-hidden>↗</span>
-                <span className="sr-only">(opens in a new tab)</span>
-              </a>
+            {/* mt-auto pins the strip to the card's foot; pt-6 keeps a gap
+                above it even on the tallest card, where mt-auto is zero. */}
+            <div className="mt-auto w-full pt-6">
+              <div className="flex flex-col items-center border-t border-mist-200 pt-3">
+                <EmailLink
+                  email={m.email}
+                  className="inline-flex items-center gap-2 py-2 text-[14px] break-all text-navy-800 transition-colors hover:text-teal-700"
+                >
+                  <MailIcon />
+                  <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
+                </EmailLink>
+                <a
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 py-2 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
+                >
+                  {m.link === "linkedin" ? "LinkedIn" : "Website"}
+                  <span aria-hidden>↗</span>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              </div>
             </div>
           </div>
         </Reveal>
