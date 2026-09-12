@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PhotoSection } from "@/components/PhotoSection";
 import { Actions, Lead, PillLink, SectionTitle, TextSection } from "@/components/Section";
-import { TeamGrid } from "@/components/Blocks";
+import { TeamList } from "@/components/Blocks";
 
 import hallway from "@/assets/photos/hallway.jpg";
 import corridor from "@/assets/photos/corridor.jpg";
@@ -37,7 +37,7 @@ export default function AboutPage() {
 
       <TextSection id="team" width="wide" tint>
         <SectionTitle>The team</SectionTitle>
-        <TeamGrid details />
+        <TeamList />
       </TextSection>
 
       <PhotoSection image={corridor}>

@@ -4,6 +4,9 @@ import type { StaticImageData } from "next/image";
 import maryumPhoto from "@/assets/team/maryum.jpg";
 import naveedPhoto from "@/assets/team/naveed.jpg";
 import jawadPhoto from "@/assets/team/jawad.jpg";
+import maryumPortrait from "@/assets/team/maryum-portrait.jpg";
+import naveedPortrait from "@/assets/team/naveed-portrait.jpg";
+import jawadPortrait from "@/assets/team/jawad-portrait.jpg";
 
 export const SITE = {
   name: "New England CareFlow",
@@ -72,6 +75,10 @@ export type TeamMember = {
   href: string;
   link: "linkedin" | "website";
   email: string;
+  /** Tall 3:4 crop for the About page's team rows. */
+  portrait: StaticImageData;
+  /** Two lines for the About page: latest degree and university, then their work here. */
+  bio: string;
 };
 
 export const TEAM: TeamMember[] = [
@@ -83,6 +90,9 @@ export const TEAM: TeamMember[] = [
     href: "https://www.linkedin.com/in/maryum-zaidi/",
     link: "linkedin",
     email: "maryumzaidi2@gmail.com",
+    portrait: maryumPortrait,
+    // Source: UMass Lowell faculty page (uml.edu/health-sciences/nursing/faculty/zaidi-maryum.aspx).
+    bio: "PhD in Nursing (Health Policy), University of Massachusetts Boston. Assistant professor of nursing at UMass Lowell, leading New England CareFlow and the Visual Notes research into easing nurses' documentation workload.",
   },
   {
     name: "Syed Naveed Zaidi",
@@ -92,6 +102,9 @@ export const TEAM: TeamMember[] = [
     href: "https://www.linkedin.com/in/naveed-zaidi-7699032/",
     link: "linkedin",
     email: "Syed.naveed@gmail.com",
+    portrait: naveedPortrait,
+    // PROVISIONAL — replace with degree + university from LinkedIn.
+    bio: "Leads technology at New England CareFlow, guiding how Visual Notes turns nursing documentation into verifiable charts.",
   },
   {
     name: "Jawad Hassan",
@@ -101,6 +114,8 @@ export const TEAM: TeamMember[] = [
     href: "https://www.jawadhasuna.site",
     link: "website",
     email: "jawadhassanbusiness@gmail.com",
+    portrait: jawadPortrait,
+    bio: "BS in Artificial Intelligence, Sir Syed CASE Institute of Technology. Builds and runs New England CareFlow's website and helps develop the Visual Notes prototype.",
   },
 ];
 
