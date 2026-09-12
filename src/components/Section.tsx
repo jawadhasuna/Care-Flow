@@ -54,7 +54,7 @@ export function Lead({
   return (
     <Reveal delay={delay}>
       <p
-        className={`mx-auto mt-8 max-w-2xl text-lg leading-[1.8] font-light md:text-xl ${
+        className={`mx-auto mt-6 max-w-2xl text-lg leading-[1.8] font-light sm:mt-8 md:text-xl ${
           tone === "light" ? "text-white/85" : "text-body"
         }`}
       >
@@ -73,14 +73,14 @@ export function Actions({
 }) {
   return (
     <Reveal delay={delay}>
-      <div className="mt-12 flex flex-wrap justify-center gap-4">{children}</div>
+      <div className="mt-10 flex flex-wrap justify-center gap-3 sm:mt-12 sm:gap-4">{children}</div>
     </Reveal>
   );
 }
 
 /** Outline pill style, shared by pill links and pill buttons. */
 export function pillClass(tone: "dark" | "light" = "dark") {
-  return `inline-flex items-center gap-2 rounded-full border-[1.5px] px-7 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-500 ease-soft ${
+  return `inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] px-7 py-3.5 max-sm:min-w-60 text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-500 ease-soft ${
     tone === "light"
       ? "border-white text-white hover:bg-white hover:text-navy-800"
       : "border-navy-800 text-navy-800 hover:bg-navy-800 hover:text-white"
@@ -130,7 +130,7 @@ export function TextSection({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className={`px-6 py-28 md:py-36 ${tint ? "bg-mist-50" : "bg-white"}`}>
+    <section id={id} className={`px-6 py-20 md:py-36 ${tint ? "bg-mist-50" : "bg-white"}`}>
       <div className={`mx-auto text-center ${width === "wide" ? "max-w-6xl" : "max-w-3xl"}`}>
         {children}
       </div>

@@ -34,7 +34,7 @@ function MailIcon() {
  */
 export function TeamGrid() {
   return (
-    <ul className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="mt-10 grid gap-6 sm:mt-16 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
       {TEAM.map((m, i) => (
         <Reveal as="li" key={m.name} delay={i * 0.12}>
           <div className="p-4">
@@ -74,7 +74,7 @@ export function TeamGrid() {
 
             <a
               href={mailto(m.email)}
-              className="mt-4 inline-flex items-center gap-2 text-[14px] break-all text-navy-800 transition-colors hover:text-teal-700"
+              className="mt-2 inline-flex items-center gap-2 py-2 text-[14px] break-all text-navy-800 transition-colors hover:text-teal-700"
             >
               <MailIcon />
               <span className="underline decoration-mist-300 underline-offset-4">{m.email}</span>
@@ -84,7 +84,7 @@ export function TeamGrid() {
                 href={m.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
+                className="inline-flex items-center gap-1.5 py-2.5 text-[11px] font-bold tracking-[0.2em] text-navy-800 uppercase opacity-60 transition-all duration-300 hover:text-teal-700 hover:opacity-100"
               >
                 {m.link === "linkedin" ? "LinkedIn" : "Website"}
                 <span aria-hidden>↗</span>
@@ -101,7 +101,7 @@ export function TeamGrid() {
 /** Segment → Extract → Ground → Cover → Render, as five numbered steps. */
 export function MethodSteps() {
   return (
-    <ol className="mt-16 grid gap-10 text-left sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+    <ol className="mt-10 grid gap-8 text-left sm:mt-16 sm:grid-cols-2 sm:gap-10 lg:grid-cols-5 lg:gap-6">
       {METHOD.map((m, i) => (
         <Reveal as="li" key={m.step} delay={i * 0.1}>
           <div className="h-full border-t border-mist-300 pt-6">
@@ -127,7 +127,7 @@ export function StudyStats() {
     { value: "6 / 6", label: "Subscales improved" },
   ];
   return (
-    <dl className="mt-14 grid gap-10 sm:grid-cols-3">
+    <dl className="mt-10 grid gap-8 sm:mt-14 sm:grid-cols-3 sm:gap-10">
       {stats.map((s, i) => (
         <Reveal key={s.label} delay={0.15 + i * 0.12}>
           <dt className="sr-only">{s.label}</dt>

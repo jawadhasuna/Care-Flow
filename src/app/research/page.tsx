@@ -46,7 +46,7 @@ export default function ResearchPage() {
           scored their perceived workload on the raw NASA-TLX after each.
         </Lead>
 
-        <dl className="mx-auto mt-16 grid max-w-4xl gap-10 sm:grid-cols-3">
+        <dl className="mx-auto mt-12 grid max-w-4xl gap-8 sm:mt-16 sm:grid-cols-3 sm:gap-10">
           {RESULTS.map((r, i) => (
             <Reveal key={r.label} delay={0.15 + i * 0.12}>
               <dt className="sr-only">{r.label}</dt>
@@ -75,7 +75,7 @@ export default function ResearchPage() {
 
       <PhotoSection image={monitor} wash="strong">
         <SectionTitle tone="light">Two guarantees</SectionTitle>
-        <div className="mt-14 grid gap-12 text-left md:grid-cols-2">
+        <div className="mt-10 grid gap-10 text-left md:mt-14 md:grid-cols-2 md:gap-12">
           {GUARANTEES.map((g, i) => (
             <Reveal key={g.title} delay={0.15 + i * 0.12}>
               <h3 className="font-display text-2xl font-light tracking-[0.03em] text-white uppercase">

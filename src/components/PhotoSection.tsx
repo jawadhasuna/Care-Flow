@@ -34,8 +34,8 @@ export function PhotoSection({
 
   const height =
     size === "header"
-      ? "min-h-[26rem] md:min-h-[34rem] py-24"
-      : "min-h-[34rem] md:min-h-[42rem] py-28";
+      ? "min-h-[22rem] md:min-h-[34rem] py-20 md:py-24"
+      : "min-h-[30rem] md:min-h-[42rem] py-20 md:py-28";
 
   const washClass =
     wash === "strong"

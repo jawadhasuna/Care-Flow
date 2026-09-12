@@ -36,7 +36,7 @@ export default function ContactPage() {
         </Actions>
 
         <Reveal delay={0.35}>
-          <div className="mx-auto mt-20 max-w-2xl border-t border-mist-200 pt-12">
+          <div className="mx-auto mt-16 max-w-2xl border-t border-mist-200 pt-10 md:mt-20 md:pt-12">
             <h3 className="text-[11px] font-bold tracking-[0.22em] text-teal-700 uppercase">
               Or reach the team directly
             </h3>
@@ -53,7 +53,7 @@ export default function ContactPage() {
                   <span className="flex items-center gap-1 sm:shrink-0">
                     <a
                       href={mailto(m.email)}
-                      className="text-[15px] break-all text-navy-800 underline decoration-teal-500 underline-offset-4 transition-colors hover:text-teal-700"
+                      className="py-1.5 text-[15px] break-all text-navy-800 underline decoration-teal-500 underline-offset-4 transition-colors hover:text-teal-700"
                     >
                       {m.email}
                     </a>

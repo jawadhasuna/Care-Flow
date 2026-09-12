@@ -5,9 +5,9 @@ import { NAV, SITE, TEAM, mailto } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="bg-navy-800 text-white/75">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-[1.5fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.5fr_1fr_1fr] md:gap-12 md:py-16">
         <div>
-          <Link href="/" className="inline-flex items-center gap-3">
+          <Link href="/" className="inline-flex items-center gap-3 py-2">
             <Mark className="mark-reverse w-11" />
             <span className="font-display text-[0.94rem] font-extrabold tracking-[0.045em] text-white uppercase">
               New England <span className="text-teal-300">CareFlow</span>
@@ -21,10 +21,10 @@ export function SiteFooter() {
 
         <div>
           <h2 className="text-[11px] font-bold tracking-[0.22em] text-teal-300 uppercase">Explore</h2>
-          <ul className="mt-5 space-y-2.5 text-sm">
+          <ul className="mt-4 space-y-0.5 text-sm">
             {NAV.map((n) => (
               <li key={n.href}>
-                <Link href={n.href} className="transition-colors hover:text-white">
+                <Link href={n.href} className="inline-block py-1.5 transition-colors hover:text-white">
                   {n.label}
                 </Link>
               </li>
@@ -34,7 +34,7 @@ export function SiteFooter() {
                 href={SITE.visualNotesUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-white"
+                className="inline-block py-1.5 transition-colors hover:text-white"
               >
                 Visual Notes ↗
               </a>
@@ -44,12 +44,12 @@ export function SiteFooter() {
 
         <div>
           <h2 className="text-[11px] font-bold tracking-[0.22em] text-teal-300 uppercase">Contact</h2>
-          <ul className="mt-5 space-y-4 text-sm">
+          <ul className="mt-4 space-y-3 text-sm">
             <li>
               <span className="block text-xs text-white/55">General enquiries</span>
               <a
                 href={mailto(SITE.email)}
-                className="mt-0.5 inline-block break-all transition-colors hover:text-white"
+                className="inline-block py-1.5 break-all transition-colors hover:text-white"
               >
                 {SITE.email}
               </a>
@@ -59,7 +59,7 @@ export function SiteFooter() {
                 <span className="block text-xs text-white/55">{m.name}</span>
                 <a
                   href={mailto(m.email)}
-                  className="mt-0.5 inline-block break-all transition-colors hover:text-white"
+                  className="inline-block py-1.5 break-all transition-colors hover:text-white"
                 >
                   {m.email}
                 </a>

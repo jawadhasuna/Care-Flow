@@ -29,11 +29,11 @@ export default function ProductsPage() {
         </Lead>
       </PhotoSection>
 
-      <section id="visual-notes" className="bg-white px-6 py-28 md:py-36">
-        <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
+      <section id="visual-notes" className="bg-white px-6 py-20 md:py-36">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Product tile: the mark reversed onto navy, with a seagreen glow. */}
           <Reveal>
-            <div className="relative isolate overflow-hidden rounded-3xl bg-navy-900 px-10 py-16 text-center shadow-[0_40px_80px_-40px_rgba(5,44,82,0.6)]">
+            <div className="relative isolate overflow-hidden rounded-3xl bg-navy-900 px-8 py-12 text-center sm:px-10 sm:py-16 shadow-[0_40px_80px_-40px_rgba(5,44,82,0.6)]">
               <div
                 aria-hidden
                 className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_25%_15%,rgba(4,172,175,0.35),transparent_55%),radial-gradient(circle_at_85%_90%,rgba(18,104,168,0.4),transparent_50%)]"
@@ -89,7 +89,7 @@ export default function ProductsPage() {
               </ul>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-10 flex flex-wrap gap-3 sm:gap-4">
                 <PillLink href={SITE.visualNotesUrl} external>
                   Open Visual Notes
                 </PillLink>

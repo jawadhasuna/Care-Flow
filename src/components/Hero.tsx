@@ -61,7 +61,7 @@ export function Hero({ image }: { image: StaticImageData }) {
           New England CareFlow LLC
         </motion.p>
 
-        <h1 className="mt-6 font-display text-[clamp(2.4rem,6.4vw,5rem)] leading-[1.05] font-light tracking-[0.03em] uppercase">
+        <h1 className="mt-6 font-display text-[clamp(2rem,10.5vw,2.6rem)] leading-[1.05] sm:text-[clamp(2.6rem,6.4vw,5rem)] font-light tracking-[0.03em] uppercase">
           {LINES.map((line, i) => (
             <span key={line} className="block overflow-hidden pb-[0.08em]">
               <motion.span

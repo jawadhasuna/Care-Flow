@@ -90,7 +90,7 @@ export default function Home() {
             href={SITE.preprintUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group mx-auto mt-14 block max-w-2xl rounded-2xl border border-mist-200 bg-white p-8 text-left transition-all duration-500 ease-soft hover:-translate-y-1 hover:border-teal-500 hover:shadow-[0_24px_50px_-28px_rgba(5,44,82,0.45)] md:p-10"
+            className="group mx-auto mt-10 block max-w-2xl rounded-2xl border border-mist-200 bg-white p-6 text-left sm:mt-14 sm:p-8 transition-all duration-500 ease-soft hover:-translate-y-1 hover:border-teal-500 hover:shadow-[0_24px_50px_-28px_rgba(5,44,82,0.45)] md:p-10"
           >
             <p className="text-[11px] font-bold tracking-[0.22em] text-teal-700 uppercase">
               Research · Preprint

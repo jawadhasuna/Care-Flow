@@ -57,7 +57,12 @@ export function SiteHeader() {
         data-header-bar
         className="mx-auto flex h-16 w-full max-w-[1500px] items-center justify-between gap-8 px-5"
       >
-        <Link href="/" aria-label={`${SITE.name} home`} onClick={(e) => onNavClick(e, "/")}>
+        <Link
+          href="/"
+          aria-label={`${SITE.name} home`}
+          onClick={(e) => onNavClick(e, "/")}
+          className="block py-2"
+        >
           <Wordmark />
         </Link>
 
