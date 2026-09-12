@@ -14,6 +14,7 @@ export function PhotoSection({
   id,
   size = "band",
   wash = "default",
+  focus,
   children,
 }: {
   image: StaticImageData;
@@ -22,6 +23,9 @@ export function PhotoSection({
   size?: "band" | "header";
   /** "strong" for bright photos that need more navy to hold white type. */
   wash?: "default" | "strong";
+  /** Which part of the photo stays in view when a wide band crops it, as a
+   *  CSS object-position — e.g. "50% 20%" keeps the upper part. Default: centre. */
+  focus?: string;
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -56,6 +60,7 @@ export function PhotoSection({
           sizes="100vw"
           placeholder="blur"
           className="object-cover"
+          style={focus ? { objectPosition: focus } : undefined}
         />
       </motion.div>
       <div aria-hidden className={`absolute inset-0 -z-10 ${washClass}`} />

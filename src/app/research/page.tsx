@@ -31,7 +31,7 @@ const GUARANTEES = [
 export default function ResearchPage() {
   return (
     <>
-      <PhotoSection image={clipboard} size="header" wash="strong">
+      <PhotoSection image={clipboard} size="header" wash="strong" focus="50% 20%">
         <SectionTitle tone="light" as="h1">
           The research
         </SectionTitle>
