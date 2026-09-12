@@ -35,9 +35,7 @@ const cardLink =
 /**
  * A team portrait. With `toned` (the homepage) it sits in the site's soft-teal
  * tone — the photo at 35% colour under a 30% "color" blend of #0e5a73 — and
- * hover or keyboard focus on the surrounding link fades it to true colour;
- * touch screens (no hover) keep the tone. Without it (the About page) it shows
- * in original colour.
+ * keeps it on hover. Without it (the About page) it shows in original colour.
  */
 function TonedPhoto({
   src,
@@ -59,13 +57,13 @@ function TonedPhoto({
         sizes={sizes}
         placeholder="blur"
         className={`object-cover transition duration-700 ease-soft group-hover:scale-[1.03] ${
-          toned ? "saturate-[0.35] group-hover:saturate-100 group-focus-visible:saturate-100" : ""
+          toned ? "saturate-[0.35]" : ""
         }`}
       />
       {toned && (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[#0e5a73] opacity-30 mix-blend-color transition-opacity duration-700 ease-soft group-hover:opacity-0 group-focus-visible:opacity-0"
+          className="pointer-events-none absolute inset-0 bg-[#0e5a73] opacity-30 mix-blend-color"
         />
       )}
     </>
@@ -73,8 +71,8 @@ function TonedPhoto({
 }
 
 /**
- * Homepage team: three across, each a large 4:3 portrait with name, role and
- * credentials centred beneath. No contact links here — each person leads to
+ * Homepage team: three across, each a large 4:3 portrait with name and role
+ * centred beneath. No contact links here — each person leads to
  * the About page's team section, where TeamList has the full details.
  */
 export function TeamGrid() {
@@ -97,9 +95,6 @@ export function TeamGrid() {
           <p className="mx-auto mt-1 max-w-xs font-display text-lg leading-snug font-light text-navy-800">
             {m.role}
           </p>
-          {m.credentials && (
-            <p className="mt-3 text-sm font-light tracking-wide">{m.credentials}</p>
-          )}
         </Reveal>
       ))}
     </ul>
@@ -108,8 +103,8 @@ export function TeamGrid() {
 
 /**
  * About page team ("Meet the team"): one person per row, stacked vertically —
- * a tall 3:4 portrait on the left, and on the right name, role, credentials,
- * a two-line summary and contact links. On phones the portrait sits above.
+ * a tall 3:4 portrait on the left, and on the right name, role, a short
+ * summary and contact links. On phones the portrait sits above.
  */
 export function TeamList() {
   return (
@@ -142,11 +137,6 @@ export function TeamList() {
           <div>
             <h3 className="font-display text-2xl font-semibold text-navy-800">{m.name}</h3>
             <p className="mt-1 font-display text-lg leading-snug font-light text-navy-800">{m.role}</p>
-            {m.credentials && (
-              <p className="mt-2 text-[11px] font-bold tracking-[0.2em] text-teal-700 uppercase">
-                {m.credentials}
-              </p>
-            )}
             <span aria-hidden className="mt-5 block h-px w-12 bg-teal-500" />
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed font-light">{m.bio}</p>
 
