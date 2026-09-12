@@ -11,6 +11,8 @@ import jawadPortrait from "@/assets/team/jawad-portrait.jpg";
 export const SITE = {
   name: "New England CareFlow",
   legalName: "New England CareFlow LLC",
+  /** The site's own address; newenglandcareflow.org and the www versions redirect here. */
+  url: "https://newenglandcareflow.com",
   description:
     "New England CareFlow LLC builds research tools for critical-care nursing documentation, starting with Visual Notes.",
   email: "newenglandcareflow@gmail.com",

@@ -11,6 +11,8 @@ const outfit = Outfit({ variable: "--font-outfit", subsets: ["latin"], display: 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
+  // Absolute links in page metadata (link previews, icons) use the real domain.
+  metadataBase: new URL(SITE.url),
   title: { default: SITE.name, template: `%s · ${SITE.name}` },
   description: SITE.description,
   applicationName: SITE.name,
